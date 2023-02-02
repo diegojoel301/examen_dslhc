@@ -1,4 +1,3 @@
-drop user 'admin@127.0.0.1';
 CREATE USER 'admin@127.0.0.1' IDENTIFIED BY 'bhverbh51363652ev6f2';
 
 FLUSH PRIVILEGES;
