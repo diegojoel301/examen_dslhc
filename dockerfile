@@ -1,22 +1,31 @@
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
 RUN apt-get update && apt-get install -y vsftpd && apt-get install -y python3 && apt-get install -y python3-pip
-# Install the required packages
-RUN apt-get update && \
-    apt-get install -y mysql-server && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+
 RUN pip install PyJWT
 RUN pip install flask
 
 RUN apt-get install -y iputils-ping
 
+RUN apt-get install -y mysql-server
+
 WORKDIR /app
 
-COPY . /app
+COPY . /app/.
 
 ENV FLASK_APP=/app/app.py
 ENV FLASK_ENV=development
+
+# Configuracion server mysql
+#RUN rm /etc/my.cnf
+COPY my.cnf /etc/my.cnf
+
+RUN cat /etc/my.cnf
+
+RUN service mysql restart
+#RUN mysql < db.sql
+
+#RUN cat /etc/my.cnf
 
 RUN rm /etc/vsftpd.conf
 
@@ -26,9 +35,4 @@ RUN mkdir /var/ftp
 
 COPY message.txt /var/ftp/
 
-ENV MYSQL_ROOT_PASSWORD=37ey782b3bg36dbgfzgs
-
-
-
-
-# CMD [ "flask", "run", "--host=0.0.0.0" ]
+CMD [ "flask", "run", "--host=0.0.0.0" ]
