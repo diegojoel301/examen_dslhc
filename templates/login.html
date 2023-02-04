@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSLHC Gen 1 Examen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./assets/css/style-with-prefix.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style-with-prefix.css') }}">
+    <style>
+        .srouce{
+            text-align: center;
+            color: #ffffff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="form-container">
+            
+            <div class="form-body">
+                <h2 class="title">Log in with</h2>
+                
+
+                <div class="_or">or</div>
+
+                <form action="{{ url_for('login') }}" class="the-form" method="POST">
+
+                    <label for="email">User</label>
+                    <input type="test" name="username" id="email" placeholder="Enter your username">
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password">
+
+                    <input type="submit" value="Log In">
+
+                </form>
+
+            </div><!-- FORM BODY-->
+
+            <div class="form-footer">
+                <div>
+                    <span>Don't have an account?</span> <a href="">Sign Up</a>
+                </div>
+            </div><!-- FORM FOOTER -->
+
+        </div><!-- FORM CONTAINER -->
+    </div>
+
+</body>
+</html>
